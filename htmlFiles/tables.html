@@ -1,69 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tables</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tables</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
 
 </head>
+
 <body>
-    <div class="container">
+  <div class="container">
 
-        <div class="jumbotron">
-            <h1 class="display-4">Hot Restaurant</h1>
-            <p class="lead">Reserve your table now! We have 5 open spots.</p>
-            <hr class="my-4">
-            <a class="btn btn-secondary btn-lg" href="./reservations" role="button">Make Reservation</a>
-            <a class="btn btn-info btn-lg" href="./index" role="button">Home</a>
-
-        </div>
-
-        <div class="card">
-            <h5 class="card-header">Current Reservations</h5>
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            </div>
-          </div>
-
-          <div class="card">
-            <h5 class="card-header">Waiting List</h5>
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            </div>
-          </div>
-
-        <footer class="footer">
-            <p>
-
-                <a href="..."> API Table List |</a>
-                <a href="..."> API Wait List</a>
-
-            </p>
-
-        </footer>
-
+    <div class="jumbotron">
+      <h1 class="display-4">Hot Restaurant</h1>
+      <p class="lead">Reserve your table now! We have 5 open spots.</p>
+      <hr class="my-4">
+      <a class="btn btn-secondary btn-lg" href="./reservations" role="button">Make Reservation</a>
+      <a class="btn btn-info btn-lg" href="./index" role="button">Home</a>
 
     </div>
 
-    <script type = "text/javascript">
+    <div class="card">
+      <h5 class="card-header">Current Reservations</h5>
+      <div class="card-body">
+        <h5 class="card-title current"></h5>
+      </div>
+    </div>
+
+    <div class="card">
+      <h5 class="card-header">Waiting List</h5>
+      <div class="card-body">
+        <h5 class="card-title wait"></h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>
+
+        <a href="..."> API Table List |</a>
+        <a href="..."> API Wait List</a>
+
+      </p>
+
+    </footer>
+
+
+  </div>
+
+  <script type="text/javascript">
 
     function runTableData() {
 
-    $.ajax({url: "/api/tables", method: "GET"})
-    .then(function(userData){
-      console.log(userData)
+      $.ajax({ url: "/api/tables", method: "GET" })
+        .then(function (userData) {
+          console.log(userData)
 
-    })
-  }
+          for (let index = 0; index < userData.length; index++) {
+            console.log(userData)
 
-  runTableData()
+            $(".current").append(
+              $("<h2>").text("Table #: " + (index + 1)),
+              $("<hr>"),
+              $("<h4>").text("Name: " + userData[index].name),
+              $("<h4>").text("Unique Id: " + userData[index].id),
+              $("<h4>").text("Email: " + userData[index].email),
+              $("<h4>").text("Phone Number: " + userData[index].phone)
 
-    </script>
+
+            )
+
+          }
+
+
+
+        })
+    }
+
+    runTableData()
+
+  </script>
 </body>
+
 </html>
