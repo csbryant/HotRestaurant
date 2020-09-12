@@ -14,4 +14,8 @@ app.get("/tables", function (req, res) {
     res.sendFile(path.join(__dirname, "../htmlFiles/tables.html"))
 });
 
+app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "../htmlFiles/index.html"))
+});
+
 };
