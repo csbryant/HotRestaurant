@@ -14,7 +14,7 @@ app.use(express.json());
 
 // HTML Routes
 // =============================================================
-//require("./routes/htmlRoutes")(app);
+require("./routes/htmlRoutes")(app);
 
 // API Routes
 // =============================================================
