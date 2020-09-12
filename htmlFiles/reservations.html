@@ -18,43 +18,41 @@
             <h1 class="display-4">Hot Restaurant</h1>
             <p class="lead">Reserve your table now! We have 5 open spots.</p>
             <hr class="my-4">
-            <a class="btn btn-secondary btn-lg" href="#" role="button">View Tables</a>
-            <a class="btn btn-info btn-lg" href="#" role="button">Make Reservation</a>
+            <a class="btn btn-secondary btn-lg" href="./tables.html" role="button">View Tables</a>
+            <a class="btn btn-info btn-lg" href="./index.html" role="button">Home</a>
 
         </div>
-    
-    <div class="row">
-        <div class="col-lg-12">
-            <!-- Reservation Page -->
-            <div class="card">
-                <div class="card-header">
-                    Table Reservation
+
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Reservation Page -->
+                <div class="card">
+                    <div class="card-header">
+                        Table Reservation
+                    </div>
                 </div>
+                <form>
+                    <div class="form-group">
+                        <label for="reserve-name">Name</label>
+                        <input type="text" class="form-control" id="reserveName">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Phone Number</label>
+                        <input type="password" class="form-control" id="reservePhone">
+                    </div>
+                    <div class="form-group">
+                        <label for="reserve-email">Email</label>
+                        <input type="text" class="form-control" id="reserveEmail">
+                    </div>
+                    <div class="form-group">
+                        <label for="reserve-unique-id">Unique ID</label>
+                        <input type="text" class="form-control" id="reserveId">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary submitBtn">Add Reservation</button>
+                </form>
             </div>
-            <form>
-                <div class="form-group">
-                    <label for="reserve-name">Name</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                        else.</small>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Phone Number</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="form-group">
-                    <label for="reserve-email">Email</label>
-                    <input type="text" class="form-control" id="reserve-email">
-                </div>
-                <div class="form-group">
-                    <label for="reserve-unique-id">Unique ID</label>
-                    <input type="text" class="form-control" id="reserve-unique-id">
-                </div>
-               
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
         </div>
-    </div>
     </div>
     </div>
     <footer class="footer">
@@ -65,7 +63,28 @@
         </div>
     </footer>
     </div>
-</div>
+    </div>
+
+    <script type="text/javascript">
+        $(".submitBtn").on("click", function (event) {
+            event.preventDefault()
+
+
+            var reservation = {
+                name: $("#reserveName").val().trim(),
+                phone: $("#reservePhone").val().trim(),
+                email: $("#reserveEmail").val().trim(),
+                id: $("#reserveId").val().trim()
+
+            }
+            console.log(reservation)
+
+        })
+
+    
+
+
+    </script>
 </body>
 
 </html>
